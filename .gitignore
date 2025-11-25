@@ -1,1 +1,7 @@
 *main.py
+.mypy_cache/
+__pycache__/
+*.pyc
+env/
+venv/
+ENV/
