@@ -3,10 +3,10 @@
 
 import asyncio
 import random
-import typing
+from typing import AsyncGenerator
 
 
-async def async_generator() -> typing.Generator[float, None]:
+async def async_generator() -> AsyncGenerator[float, None, None]:
     """Async generator that yields 10 random numbers with a 1 sec delay."""
     for _ in range(10):
         await asyncio.sleep(1)
