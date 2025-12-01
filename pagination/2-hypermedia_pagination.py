@@ -60,7 +60,7 @@ class Server:
         total_pages = (total_items + page_size - 1) // page_size
 
         next_page = page + 1 if page < total_pages else None
-        prev_page = page - 1 if page > total_pages else None
+        prev_page = page - 1 if page > 1 else None
 
         return {
             'page_size': len(data),
