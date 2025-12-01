@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
-
-import csv
+'''
+method named get_page that takes two integer arguments page
+with default value 1 and page_size with default value 10
+'''
 from typing import List
+import csv
 
 
 def index_range(page: int, page_size: int) -> tuple:
-    """Return a tuple of size two containing a start index and an end index"""
-    start_index = (page - 1) * page_size
-    end_index = start_index + page_size
-    return (start_index, end_index)
+    '''containing a start index and an end index'''
+    start = (page - 1) * page_size
+    end = start + page_size
+    return (start, end)
 
 
 class Server:
@@ -20,8 +23,7 @@ class Server:
         self.__dataset = None
 
     def dataset(self) -> List[List]:
-        """Cached dataset
-        """
+        """Cached dataset"""
         if self.__dataset is None:
             with open(self.DATA_FILE) as f:
                 reader = csv.reader(f)
@@ -30,11 +32,11 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        """Return the appropriate page of the dataset (list of lists)."""
+        """Return the appropriate page of the dataset."""
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
 
         start, end = index_range(page, page_size)
-        dataset = self.dataset()
+        data = self.dataset()
 
-        return dataset[start:end]
+        return data[start:end]
