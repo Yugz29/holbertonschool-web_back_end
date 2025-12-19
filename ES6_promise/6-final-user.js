@@ -5,7 +5,7 @@ export default function handleProfileSingup(firstName, lastName, fileName) {
     const userPromise = signUpUser(firstName, lastName);
     const photoPromise = uploadPhoto(fileName);
 
-    return Promise.allSettled([photoPromise, userPromise])
+    return Promise.allSettled([userPromise, photoPromise])
         .then(results => {
             return results.map(result => {
                 if (result.status === 'rejected') {
