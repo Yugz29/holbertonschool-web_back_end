@@ -14,7 +14,7 @@ const app = http.createServer((req, res) => {
         res.end(`This is the list of our students\n${result}`);
       })
       .catch((error) => {
-        res.end(String(error));
+        res.end(`This is the list of our students\n${error}`);
       });
   }
 });
