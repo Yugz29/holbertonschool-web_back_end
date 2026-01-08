@@ -21,7 +21,7 @@ function countStudents(path) {
         }
 
         output += `Number of students in CS: ${groups.CS.length}. List: ${groups.CS.join(', ')}\n`;
-        output += `Number of students in SWE: ${groups.SWE.length}. List: ${groups.SWE.join(', ')}`;
+        output += `Number of students in SWE: ${groups.SWE.length}. List: ${groups.SWE.join(', ')}\n`;
         
         resolve(output);
       }
