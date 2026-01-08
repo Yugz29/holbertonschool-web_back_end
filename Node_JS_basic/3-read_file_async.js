@@ -8,12 +8,9 @@ function countStudents(path) {
       } else {
         const lines = data.split('\n').slice(1);
         const students = lines.filter((line) => line !== '');
-        console.log(`Number of students: ${students.length}`);
-
-        const groups = {
-          CS: [],
-          SWE: [],
-        };
+        let output = `Number of students: ${students.length}\n`;
+  
+        const groups = { CS: [], SWE: [] };
 
         for (let i = 0; i < students.length; i += 1) {
           const line = students[i];
@@ -23,9 +20,10 @@ function countStudents(path) {
           groups[field].push(firstname);
         }
 
-        console.log(`Number of students in CS: ${groups.CS.length}. List: ${groups.CS.join(', ')}`);
-        console.log(`Number of students in SWE: ${groups.SWE.length}. List: ${groups.SWE.join(', ')}`);
-        resolve();
+        output += `Number of students in CS: ${groups.CS.length}. List: ${groups.CS.join(', ')}\n`;
+        output += `Number of students in SWE: ${groups.SWE.length}. List: ${groups.SWE.join(', ')}`;
+        
+        resolve(output);
       }
     });
   });
