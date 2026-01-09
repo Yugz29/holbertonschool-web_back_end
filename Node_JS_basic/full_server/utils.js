@@ -8,20 +8,26 @@ const readDatabase = (filePath) => {
         return;
       }
 
-      const lines = data.split('\n').slice(1);
-      const students = lines.filter((line) => line !== '');
+      const lines = data.trim().split('\n').slice(1); // trim() important!
       const groups = {};
 
-      for (let i = 0; i < students.length; i += 1) {
-        const line = students[i];
+      for (let i = 0; i < lines.length; i += 1) {
+        const line = lines[i].trim(); // trim chaque ligne
+        
+        if (line === '') continue; // ignore les lignes vides
+        
         const parts = line.split(',');
-        const firstname = parts[0];
-        const field = parts[3];
+        
+        // Vérifier que la ligne a 4 colonnes et un prénom valide
+        if (parts.length === 4 && parts[0] && parts[3]) {
+          const firstname = parts[0];
+          const field = parts[3];
 
-        if (!groups[field]) {
-          groups[field] = [];
+          if (!groups[field]) {
+            groups[field] = [];
+          }
+          groups[field].push(firstname);
         }
-        groups[field].push(firstname);
       }
 
       resolve(groups);
